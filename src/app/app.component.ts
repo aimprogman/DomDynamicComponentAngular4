@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<dom-node-generator [httpUrl]="httpUrl"></dom-node-generator>',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent{
+  httpUrl = 'assets/data/model.json';
 }
