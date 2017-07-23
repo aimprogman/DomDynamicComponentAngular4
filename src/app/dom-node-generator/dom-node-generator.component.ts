@@ -13,7 +13,7 @@ export class DomNodeGeneratorComponent implements OnInit {
  
   @Input() httpUrl: string;    
   domNode: IDomNode;
-  element: string = "" ;
+  element: string;
 
   constructor(private dngService: DngService) { 
   
@@ -22,8 +22,17 @@ export class DomNodeGeneratorComponent implements OnInit {
   ngOnInit() {
       this.dngService.loadModel(this.httpUrl).subscribe(response=>{
                 this.domNode=response;
-                console.log(this.domNode.tag);
-                this.element = '<h1>Title</h1>';
+                let attributes: string;
+               
+                 this.element=this.domNode.content.map(function(item){
+                   attributes="";
+                    for (var key in item.attributes){
+                        attributes += key+ '="'+item.attributes[key]+'" ';   
+                    }
+                    
+                    return  "<"+item.tag+" "+attributes+">"+"as</"+item.tag+">";
+                }).join(" ");
+                 console.log(this.element);
       });
 
   }
