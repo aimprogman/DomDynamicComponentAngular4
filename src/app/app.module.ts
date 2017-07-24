@@ -2,25 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
-import {Routes, RouterModule} from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { DomNodeGeneratorComponent } from './dom-node-generator/dom-node-generator.component';
+import { DynamicElementComponent } from './dynamic-element/dynamic-element.component';
 
-const appRoutes: Routes =[
-    { path: '', component: AppComponent},
-    { path: 'about', component: AppComponent}
-];
 
 @NgModule({
   declarations: [
     AppComponent,
-    DomNodeGeneratorComponent
+    DomNodeGeneratorComponent,
+    DynamicElementComponent
   ],
+  entryComponents: [DynamicElementComponent],
   imports: [
     BrowserModule,
-    HttpModule,
-    RouterModule.forRoot(appRoutes)
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
